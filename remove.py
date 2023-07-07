@@ -38,7 +38,7 @@ def main():
                     href = f'<a href="data:image/jpeg;base64,{encoded_img}" download="output.jpg">Fotoğrafı İndir</a>'
                     st.markdown(href, unsafe_allow_html=True)
 
-
+                    st.title("Made by Müşerref Selçuk Özdemir")
 
 
 if __name__ == "__main__":
