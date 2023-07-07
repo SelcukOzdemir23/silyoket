@@ -2,6 +2,7 @@ import streamlit as st
 from rembg import remove
 from PIL import Image
 import base64
+import io
 
 def main():
     # Özel logo ekleme
@@ -11,8 +12,6 @@ def main():
     st.title("Arka Plan Kaldırıcı")
 
     uploaded_file = st.file_uploader("Lütfen bir fotoğraf yükleyin", type=["jpg", "jpeg", "png"])
-
-    
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
@@ -25,14 +24,25 @@ def main():
                 with st.spinner("Arka plan kaldırılıyor..."):
                     output = remove(image)
                     st.image(output, caption="Arka Planı Yok Edilmiş Fotoğraf", use_column_width=True)
-                    
-                    output_path = "output.png"  # Kaydedilecek dosya adı ve uzantısı
-                    output.save(output_path, "PNG")
-                    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.png")
+
+                    if st.button("Fotoğrafı İndir"):
+                        download_image(output)
 
 
+def download_image(output):
+    # Çıktıyı bir bayt akışına dönüştürün
+    img_byte_arr = io.BytesIO()
+    output.save(img_byte_arr, format='PNG')
+    img_byte_arr.seek(0)
 
-    
+    # Base64 kodlamasını gerçekleştirin
+    encoded_img = base64.b64encode(img_byte_arr.read()).decode()
+
+    # İndirme bağlantısını oluşturun
+    href = f'<a href="data:image/png;base64,{encoded_img}" download="output.png">Fotoğrafı İndir</a>'
+
+    # İndirme bağlantısını görüntüleyin
+    st.markdown(href, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
