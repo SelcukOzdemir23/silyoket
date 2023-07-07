@@ -23,18 +23,12 @@ def main():
                 with st.spinner("Arka plan kaldırılıyor..."):
                     output = remove(image)
                     st.image(output, caption="Arka Planı Yok Edilmiş Fotoğraf", use_column_width=True)
+                    output_path = "output.png"
+                    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.png")
 
-                    if st.button("Fotoğrafı İndir"):
-                        download_image(output)
 
 
-def download_image(output):
-    # Çıktıyı geçici bir dosyaya kaydedin
-    output_path = "output.png"  # Kaydedilecek dosya adı ve uzantısı
-    output.save(output_path, "PNG")  # Çıktıyı PNG formatında kaydet
-
-    # Dosyayı indirme butonuyla indirin
-    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.png")
+    
 
 
 if __name__ == "__main__":
