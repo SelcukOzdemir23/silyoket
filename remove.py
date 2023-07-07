@@ -7,7 +7,7 @@ def main():
     # Özel logo ekleme
     logo_image = Image.open("unnamed.png")
     st.image(logo_image, width=200)
-    
+
     st.title("Arka Plan Kaldırıcı")
 
     uploaded_file = st.file_uploader("Lütfen bir fotoğraf yükleyin", type=["jpg", "jpeg", "png"])
@@ -25,8 +25,8 @@ def main():
                 with st.spinner("Arka plan kaldırılıyor..."):
                     output = remove(image)
                     st.image(output, caption="Arka Planı Yok Edilmiş Fotoğraf", use_column_width=True)
-                    output_path = "output.png"
-                    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.png")
+                    output_path = "output.jpg"
+                    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.jpg")
 
 
 
