@@ -26,9 +26,9 @@ def main():
                     output = remove(image)
                     st.image(output, caption="Arka Planı Yok Edilmiş Fotoğraf", use_column_width=True)
                     
-                    output_path = "output.jpg"  # Kaydedilecek dosya adı ve uzantısı
-                    output.save(output_path, "JPEG")
-                    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.jpeg")
+                    output_path = "output.png"  # Kaydedilecek dosya adı ve uzantısı
+                    output.save(output_path, "PNG")
+                    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.png")
 
 
 
