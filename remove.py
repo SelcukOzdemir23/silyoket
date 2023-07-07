@@ -25,22 +25,13 @@ def main():
                     st.image(output, caption="Arka Planı Yok Edilmiş Fotoğraf", use_column_width=True)
                     
                     if st.button("Fotoğrafı İndir"):
-                        download_button(output)
+                        save_image(output)
 
 
-def download_button(output):
-    # Çıktıyı bir bayt akışına dönüştürün
-    img_byte_arr = output.convert("RGB").save(output, format="JPEG")
-    img_byte_arr.seek(0)
-
-    # Base64 kodlamasını gerçekleştirin
-    encoded_img = base64.b64encode(img_byte_arr.getvalue()).decode()
-
-    # İndirme bağlantısını oluşturun
-    href = f'<a href="data:image/jpeg;base64,{encoded_img}" download="output.jpg">Fotoğrafı İndir</a>'
-
-    # İndirme bağlantısını görüntüleyin
-    st.markdown(href, unsafe_allow_html=True)
+def save_image(output):
+    output_path = "output.png"  # Kaydedilecek dosya adı ve uzantısı
+    output.save(output_path, "PNG")  # Fotoğrafı kaydet
+    st.download_button(label="Fotoğrafı İndir", data=output_path, file_name="output.png")
 
 
 if __name__ == "__main__":
