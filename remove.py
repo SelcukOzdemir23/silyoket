@@ -4,13 +4,15 @@ from PIL import Image
 import base64
 
 def main():
+    # Özel logo ekleme
+    logo_image = Image.open("unnamed.png")
+    st.image(logo_image, width=200)
+    
     st.title("Arka Plan Kaldırıcı")
 
     uploaded_file = st.file_uploader("Lütfen bir fotoğraf yükleyin", type=["jpg", "jpeg", "png"])
 
-    # Özel logo ekleme
-    logo_image = Image.open("unnamed.png")
-    st.image(logo_image, width=200)
+    
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
