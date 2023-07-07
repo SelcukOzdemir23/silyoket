@@ -8,6 +8,7 @@ def main():
     # Özel logo ekleme
     logo_image = Image.open("unnamed.png")
     st.image(logo_image, width=200)
+    st.balloons()
 
     st.info("JPEG,JPG,PNG fotoğrafları yükleyebilirsiniz. Yükledikten sonra fotoğrafın görüntülenmesini bekleyin. Arka Planı Yok et butonuna basarak arka planı kaldırabilirsiniz. Ardından Fotoğrafı indir butonu ile kaydedebilirsiniz. ")
 
@@ -38,7 +39,7 @@ def main():
                     href = f'<a href="data:image/jpeg;base64,{encoded_img}" download="output.jpg">Fotoğrafı İndir</a>'
                     st.markdown(href, unsafe_allow_html=True)
 
-                    st.title("Made by Müşerref Selçuk Özdemir")
+    st.text("Made by Müşerref Selçuk Özdemir")
 
 
 if __name__ == "__main__":
