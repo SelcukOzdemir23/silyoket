@@ -9,7 +9,7 @@ def main():
     uploaded_file = st.file_uploader("Lütfen bir fotoğraf yükleyin", type=["jpg", "jpeg", "png"])
 
     # Özel logo ekleme
-    logo_image = Image.open("path/to/your/logo.png")
+    logo_image = Image.open("unnamed.png")
     st.image(logo_image, width=200)
 
     if uploaded_file is not None:
