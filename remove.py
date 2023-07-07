@@ -27,17 +27,14 @@ def main():
                 with st.spinner("Arka plan kaldırılıyor..."):
                     output = remove(image)
                     st.image(output, caption="Arka Planı Yok Edilmiş Fotoğraf", use_column_width=True)
-                    
-                    # if st.button("Fotoğrafı İndir"):
-                    img_byte_arr = output.convert("RGB")
-                    img_byte_io = io.BytesIO()
-                    img_byte_arr.save(img_byte_io, format='JPEG')
-                    img_byte_io.seek(0)
-
-                    # Base64 kodlamasını gerçekleştirin
-                    encoded_img = base64.b64encode(img_byte_io.read()).decode()
-                    href = f'<a href="data:image/jpeg;base64,{encoded_img}" download="output.jpg">Fotoğrafı İndir</a>'
-                    st.markdown(href, unsafe_allow_html=True)
+                    output.save("output.png","PNG")
+                    with open("output.png", "rb") as file:
+                        btn = st.download_button(
+                            label="Download image",
+                            data=file,
+                            file_name="output.png",
+                            mime="image/png"
+                )
 
     st.text("Made by Müşerref Selçuk Özdemir")
 
