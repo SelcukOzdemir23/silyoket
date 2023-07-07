@@ -9,6 +9,8 @@ def main():
     logo_image = Image.open("unnamed.png")
     st.image(logo_image, width=200)
 
+    st.info("JPEG,JPG,PNG fotoğrafları yükleyebilirsiniz. Yükledikten sonra fotoğrafın görüntülenmesini bekleyin. Arka Planı Yok et butonuna basarak arka planı kaldırabilirsiniz. Ardından Fotoğrafı indir butonu ile kaydedebilirsiniz. ")
+
     st.title("Arka Plan Kaldırıcı")
 
     uploaded_file = st.file_uploader("Lütfen bir fotoğraf yükleyin", type=["jpg", "jpeg", "png"])
