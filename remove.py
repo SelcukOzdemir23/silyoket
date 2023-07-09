@@ -6,7 +6,7 @@ import io
 
 def main():
     # Özel logo ekleme
-    logo_image = Image.open("logo.png")
+    logo_image = Image.open("logom.png")
     st.image(logo_image, width=200)
     st.balloons()
 
