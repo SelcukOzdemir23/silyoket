@@ -1,5 +1,5 @@
 import streamlit as st
-from rembg import remove
+from rembg import remove # silmeyi sağlayan kütüphane
 from PIL import Image
 import base64
 import io
